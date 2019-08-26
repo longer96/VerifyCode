@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="PhoneCode">
+        <!-- 验证码长度 默认6 -->
+        <attr name="codeLength" format="integer" />
+        <!-- 验证码字体大小 8-->
+        <attr name="codeTextSize" format="dimension" />
+        <!-- 验证码字体颜色 -->
+        <attr name="codeTextColor" format="color" />
+        <!-- 验证码框的宽度 -->
+        <attr name="codeWidth" format="dimension" />
+        <!-- 验证码框的高度 -->
+        <attr name="codeHeight" format="dimension" />
+        <!-- 验证码框间距 -->
+        <attr name="codeMargin" format="dimension" />
+        <!-- 验证码默认背景 -->
+        <attr name="codeBgNormal" format="reference" />
+        <!-- 验证码焦点背景 -->
+        <attr name="codeBgFocus" format="reference" />
+
+        <!--输入框样式-->
+        <attr name="codeStyle" format="integer" />
+        <!--正常时边框颜色-->
+        <attr name="normalStrokeColor" format="color" />
+        <!--正常时内容背景颜色-->
+        <attr name="normalContentColor" format="color" />
+        <!--选中时边框颜色-->
+        <attr name="focusStrokeColor" format="color" />
+        <!--选中时内容背景颜色-->
+        <attr name="focusContentColor" format="color" />
+        <!--是否加粗-->
+        <attr name="isBold" format="boolean" />
+        <!--边框的宽度-->
+        <attr name="strokeSize" format="integer" />
+
+
+    </declare-styleable>
+
+</resources>
