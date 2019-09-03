@@ -515,7 +515,7 @@ public class PhoneCode extends RelativeLayout implements IPhoneCode {
 
     @Override
     public void setTvNormalColorStroke(int tvNormalColorStroke) {
-
+    //测试提交 revert
     }
 
     @Override
