@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eee"
+    android:orientation="vertical"
+    tools:context=".PhoneCodeActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:text="输入验证码"
+        android:textColor="#000000"
+        android:textSize="28dp" />
+
+    <com.longer.verifyedittext.PhoneCode
+        android:id="@+id/phonecode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="30dp"
+        android:paddingBottom="20dp" />
+
+
+    <com.longer.verifyedittext.PhoneCode
+        android:id="@+id/phonecode2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        app:codeStyle="1002"
+        app:codeLength="5"
+        app:codeMargin="10dp"
+        app:codeTextColor="@color/colorPrimary"
+        app:codeTextSize="24sp"
+        app:codeTvHeight="45dp"
+        app:codeTvWidth="45dp"
+        app:isNumber="false"
+        app:isShowPwd="true" />
+
+
+    <com.longer.verifyedittext.PhoneCode
+        android:id="@+id/phonecode3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        app:codeBgFocus="@drawable/verify_oval_bg_focus"
+        app:codeBgNormal="@drawable/verify_oval_bg_normal"
+        app:codeLength="4"
+        app:codeMargin="10dp"
+        app:codeTextColor="@color/colorPrimary"
+        app:codeTextSize="24sp"
+        app:codeTvHeight="60dp"
+        app:codeTvWidth="60dp" />
+
+
+    <TextView
+        android:id="@+id/tvConfirm1"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_horizontal"
+        android:background="#eb6951"
+        android:gravity="center"
+        android:text="clear"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_horizontal"
+        android:background="#eb6951"
+        android:onClick="red"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="测试"
+        android:textColor="@android:color/white" />
+
+</LinearLayout>

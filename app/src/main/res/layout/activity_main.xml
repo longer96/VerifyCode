@@ -4,88 +4,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#eee"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:background="#eee"
+    android:paddingTop="30dp"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        android:text=""
-        android:textColor="#000"
-        android:textSize="30sp" />
 
-    <com.longer.verifyedittext.PhoneCode
-        android:id="@+id/phonecode"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="20dp"
-        android:paddingBottom="20dp"
-        app:codeBgFocus="@drawable/verify_rectangle_bg_focus"
-        app:codeBgNormal="@drawable/verify_rectangel_bg_normal"
-        app:codeLength="6"
-        app:codeHeight="45dp"
-        app:codeMargin="10dp"
-        app:codeTextColor="@color/colorPrimary"
-        app:codeTextSize="24sp"
-        app:codeWidth="45dp" />
-
-
-    <com.longer.verifyedittext.PhoneCode
-        android:id="@+id/phonecode2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="20dp"
-        android:paddingBottom="20dp"
-        app:codeBgFocus="@drawable/verify_line_bg_focus"
-        app:codeBgNormal="@drawable/verify_line_bg_normal"
-        app:codeLength="5"
-        app:codeHeight="45dp"
-        app:codeMargin="10dp"
-        app:codeTextColor="@color/colorPrimary"
-        app:codeTextSize="24sp"
-        app:codeWidth="45dp" />
-
-
-    <com.longer.verifyedittext.PhoneCode
-        android:id="@+id/phonecode3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="20dp"
-        android:paddingBottom="20dp"
-        app:codeBgFocus="@drawable/verify_oval_bg_focus"
-        app:codeBgNormal="@drawable/verify_oval_bg_normal"
-        app:codeLength="4"
-        app:codeHeight="45dp"
-        app:codeMargin="10dp"
-        app:codeTextColor="@color/colorPrimary"
-        app:codeTextSize="24sp"
-        app:codeWidth="45dp" />
-
-
-    <TextView
-        android:id="@+id/tvConfirm1"
+    <Button
         android:layout_width="100dp"
         android:layout_height="40dp"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
         android:background="#eb6951"
+        android:clickable="true"
         android:gravity="center"
-        android:text="clear"
+        android:onClick="openPhoneCode"
+        android:text="验证码Demo"
         android:textColor="@android:color/white" />
 
     <Button
-        android:layout_marginTop="20dp"
         android:layout_width="100dp"
-        android:onClick="aaaa"
         android:layout_height="40dp"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
         android:background="#eb6951"
-        android:gravity="center"
-        android:text="打开支付宝"
         android:clickable="true"
+        android:gravity="center"
+        android:onClick="toZft"
+        android:text="打开支付宝"
         android:textColor="@android:color/white" />
 
 </LinearLayout>

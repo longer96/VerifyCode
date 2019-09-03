@@ -13,7 +13,6 @@ import android.text.InputType;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.ViewGroup;
@@ -26,12 +25,12 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PhoneCode extends RelativeLayout implements IPhoneCode {
+public class PhoneCode2 extends RelativeLayout implements IPhoneCode {
 //TODO   验证码输入完成后失去焦点
 //TODO : 键盘的弹出隐藏
 
     //暴露给外面的接口
-    private IPhoneCode.OnVCodeInputListener onVCodeInputListener;
+    private OnVCodeInputListener onVCodeInputListener;
 
     //输入的长度
     private int vCodeLength = 5;
@@ -79,15 +78,15 @@ public class PhoneCode extends RelativeLayout implements IPhoneCode {
     //是否输入隐藏为密码符号
     private Boolean isShowPwd = false;
 
-    public PhoneCode(Context context) {
+    public PhoneCode2(Context context) {
         this(context, null);
     }
 
-    public PhoneCode(Context context, AttributeSet attrs) {
+    public PhoneCode2(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public PhoneCode(Context context, AttributeSet attrs, int defStyleAttr) {
+    public PhoneCode2(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
         //获取自定义样式的属性
@@ -416,13 +415,13 @@ public class PhoneCode extends RelativeLayout implements IPhoneCode {
     /**
      * 直接设置验证码
      */
-    public void setEditText(String inputData) {
+    public void setInputData(String inputData) {
         this.inputData = inputData;
         editText.setText(inputData);
     }
 
     @Override
-    public void setOnVCodeCompleteListener(IPhoneCode.OnVCodeInputListener OnVCodeInputListener) {
+    public void setOnVCodeCompleteListener(OnVCodeInputListener OnVCodeInputListener) {
         this.onVCodeInputListener = OnVCodeInputListener;
     }
 
@@ -474,38 +473,22 @@ public class PhoneCode extends RelativeLayout implements IPhoneCode {
 
     @Override
     public void setTvWidth(int tvWidth) {
-        this.tvWidth = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, tvWidth, getResources().getDisplayMetrics());
-        for (int i = 0; i < vCodeLength; i++) {
-            LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) tvList.get(i).getLayoutParams();
-            layoutParams.width = this.tvWidth;
-            tvList.get(i).setLayoutParams(layoutParams);
-        }
+
     }
 
     @Override
     public void setTvHeight(int tvHeight) {
-        this.tvHeight = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, tvHeight, getResources().getDisplayMetrics());
-        for (int i = 0; i < vCodeLength; i++) {
-            LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) tvList.get(i).getLayoutParams();
-            layoutParams.height = this.tvHeight;
-            tvList.get(i).setLayoutParams(layoutParams);
-        }
+
     }
 
     @Override
     public void setTvTextColor(int tvTextColor) {
-        this.tvTextColor = tvTextColor;
-        for (int i = 0; i < vCodeLength; i++) {
-            tvList.get(i).setTextColor(this.tvTextColor);
-        }
+
     }
 
     @Override
     public void setTvTextSize(float tvTextSize) {
-        this.tvTextSize = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, tvTextSize, getResources().getDisplayMetrics());
-        for (int i = 0; i < vCodeLength; i++) {
-            tvList.get(i).setTextColor(this.tvTextColor);
-        }
+
     }
 
     @Override

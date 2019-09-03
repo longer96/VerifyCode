@@ -9,9 +9,9 @@
         <!-- 验证码字体颜色 -->
         <attr name="codeTextColor" format="color" />
         <!-- 验证码框的宽度 -->
-        <attr name="codeWidth" format="dimension" />
+        <attr name="codeTvWidth" format="dimension" />
         <!-- 验证码框的高度 -->
-        <attr name="codeHeight" format="dimension" />
+        <attr name="codeTvHeight" format="dimension" />
         <!-- 验证码框间距 -->
         <attr name="codeMargin" format="dimension" />
         <!-- 验证码默认背景 -->
@@ -25,15 +25,18 @@
         <attr name="normalStrokeColor" format="color" />
         <!--正常时内容背景颜色-->
         <attr name="normalContentColor" format="color" />
-        <!--选中时边框颜色-->
+        <!--焦点时边框颜色-->
         <attr name="focusStrokeColor" format="color" />
-        <!--选中时内容背景颜色-->
+        <!--焦点时内容背景颜色-->
         <attr name="focusContentColor" format="color" />
         <!--是否加粗-->
         <attr name="isBold" format="boolean" />
         <!--边框的宽度-->
         <attr name="strokeSize" format="integer" />
-
+        <!--是否输入类型为数字  默认true -->
+        <attr name="isNumber" format="boolean" />
+        <!--是否隐藏输入为密码符号  默认false -->
+        <attr name="isShowPwd" format="boolean" />
 
     </declare-styleable>
 
