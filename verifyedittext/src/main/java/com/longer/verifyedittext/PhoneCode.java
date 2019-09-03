@@ -13,7 +13,6 @@ import android.text.InputType;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.ViewGroup;
@@ -510,49 +509,69 @@ public class PhoneCode extends RelativeLayout implements IPhoneCode {
 
     @Override
     public void setTvBgStyle(int tvBgStyle) {
-
+        this.tvBgStyle = tvBgStyle;
+        init();
     }
 
     @Override
     public void setTvNormalColorStroke(int tvNormalColorStroke) {
-    //测试提交 revert
-    //测试提交 revert3
-
+        this.tvNormalColorStroke = tvNormalColorStroke;
+        for (int i = 0; i < vCodeLength; i++) {
+            setTvBg(tvList.get(i));
+        }
     }
 
     @Override
     public void setTvNormalColorContent(int tvNormalColorContent) {
-
+        this.tvNormalColorContent = tvNormalColorContent;
+        for (int i = 0; i < vCodeLength; i++) {
+            setTvBg(tvList.get(i));
+        }
     }
 
     @Override
     public void setTvFocusColorStroke(int tvFocusColorStroke) {
-
+        this.tvFocusColorStroke = tvFocusColorStroke;
+        for (int i = 0; i < vCodeLength; i++) {
+            setTvBg(tvList.get(i));
+        }
     }
 
     @Override
     public void setTvFocusColorContent(int tvFocusColorContent) {
-
+        this.tvFocusColorContent = tvFocusColorContent;
+        for (int i = 0; i < vCodeLength; i++) {
+            setTvBg(tvList.get(i));
+        }
     }
 
     @Override
     public void setBold(Boolean bold) {
-
+        this.isBold = bold;
+        for (int i = 0; i < vCodeLength; i++) {
+            tvList.get(i).setTypeface(isBold ? Typeface.defaultFromStyle(Typeface.BOLD) : Typeface.defaultFromStyle(Typeface.NORMAL));
+        }
     }
 
     @Override
     public void setTvStrokeSize(int tvStrokeSize) {
-
+        this.tvStrokeSize = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, tvStrokeSize, getResources().getDisplayMetrics());
+        for (int i = 0; i < vCodeLength; i++) {
+            setTvBg(tvList.get(i));
+        }
     }
 
     @Override
     public void setNumber(Boolean number) {
-
+        this.isNumber = number;
+        editText.setInputType(number?InputType.TYPE_CLASS_NUMBER:InputType.TYPE_NULL);
     }
 
     @Override
     public void setShowPwd(Boolean showPwd) {
-
+        this.isShowPwd = showPwd;
+        editText.setText("");
+        inputData = "";
     }
     //---------------- set end -------------
 }
