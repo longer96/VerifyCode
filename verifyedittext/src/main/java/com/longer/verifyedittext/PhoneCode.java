@@ -403,19 +403,11 @@ public class PhoneCode extends RelativeLayout implements IPhoneCode {
     }
 
     //---------------- set begin -------------
-    public void setTvBg() {
-        tvTextColor = Color.RED;
-
-        for (int i = 0; i < vCodeLength; i++) {
-            tvList.get(i).setTextColor(tvTextColor);
-        }
-    }
-
 
     /**
      * 直接设置验证码
      */
-    public void setEditText(String inputData) {
+    public void setText(String inputData) {
         this.inputData = inputData;
         editText.setText(inputData);
     }
@@ -574,4 +566,5 @@ public class PhoneCode extends RelativeLayout implements IPhoneCode {
         inputData = "";
     }
     //---------------- set end -------------
+
 }

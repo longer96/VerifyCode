@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:gravity="center"
-        android:text="输入验证码"
+        android:text="输入车牌号"
         android:textColor="#000000"
         android:textSize="28dp" />
 
@@ -21,6 +21,7 @@
         android:id="@+id/phonecode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:codeMargin="-1dp"
         android:paddingTop="30dp"
         android:paddingBottom="20dp" />
 

@@ -4,10 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.longer.verifyedittext.BankInfoBean;
 import com.longer.verifyedittext.PhoneCode;
 
 public class PhoneCodeActivity extends AppCompatActivity {
@@ -29,9 +31,9 @@ public class PhoneCodeActivity extends AppCompatActivity {
         tvConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                phonecode.setEditText("");
-                phonecode2.setEditText("");
-                phonecode3.setEditText("");
+                phonecode.setText("");
+                phonecode2.setText("");
+                phonecode3.setText("");
             }
         });
 
@@ -90,13 +92,20 @@ public class PhoneCodeActivity extends AppCompatActivity {
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        phonecode.setEditText(savedInstanceState.getString("vcode"));
-        phonecode2.setEditText(savedInstanceState.getString("vcode2"));
-        phonecode3.setEditText(savedInstanceState.getString("vcode3"));
+        phonecode.setText(savedInstanceState.getString("vcode"));
+        phonecode2.setText(savedInstanceState.getString("vcode2"));
+        phonecode3.setText(savedInstanceState.getString("vcode3"));
     }
 
     public void red(View view) {
 //        phonecode.setTvBg();
         phonecode.setTvMargin(14);
+
+        BankInfoBean infoBean = new BankInfoBean();
+        infoBean.setBankcode("6217003810028144056");
+        if(infoBean.checkBankCard())
+            Log.i("longer","是");
+        else
+            Log.i("longer","不是");
     }
 }
