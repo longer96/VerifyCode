@@ -21,8 +21,8 @@
         android:id="@+id/phonecode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:codeMargin="-1dp"
         android:paddingTop="30dp"
+        app:isBold="false"
         android:paddingBottom="20dp" />
 
 
@@ -50,7 +50,7 @@
         android:paddingTop="20dp"
         android:paddingBottom="20dp"
         app:codeBgFocus="@drawable/verify_oval_bg_focus"
-        app:codeBgNormal="@drawable/verify_oval_bg_normal"
+        app:bgNormal="@drawable/verify_oval_bg_normal"
         app:codeLength="4"
         app:codeMargin="10dp"
         app:codeTextColor="@color/colorPrimary"

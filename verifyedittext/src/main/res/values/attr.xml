@@ -2,7 +2,7 @@
 <resources>
 
     <declare-styleable name="PhoneCode">
-        <!-- 验证码长度 默认6 -->
+        <!-- 验证码长度 默认5 -->
         <attr name="codeLength" format="integer" />
         <!-- 验证码字体大小 8-->
         <attr name="codeTextSize" format="dimension" />
@@ -15,7 +15,7 @@
         <!-- 验证码框间距 -->
         <attr name="codeMargin" format="dimension" />
         <!-- 验证码默认背景 -->
-        <attr name="codeBgNormal" format="reference" />
+        <attr name="bgNormal" format="reference" />
         <!-- 验证码焦点背景 -->
         <attr name="codeBgFocus" format="reference" />
 
@@ -32,7 +32,7 @@
         <!--是否加粗-->
         <attr name="isBold" format="boolean" />
         <!--边框的宽度-->
-        <attr name="strokeSize" format="integer" />
+        <attr name="strokeSize" format="dimension" />
         <!--是否输入类型为数字  默认true -->
         <attr name="isNumber" format="boolean" />
         <!--是否隐藏输入为密码符号  默认false -->
