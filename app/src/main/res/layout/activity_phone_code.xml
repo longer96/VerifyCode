@@ -22,8 +22,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="30dp"
+        android:paddingBottom="20dp"
+        app:isShowPwd="true"
         app:isBold="false"
-        android:paddingBottom="20dp" />
+        app:strokeSize="1dp"/>
 
 
     <com.longer.verifyedittext.PhoneCode
@@ -32,15 +34,20 @@
         android:layout_height="wrap_content"
         android:paddingTop="20dp"
         android:paddingBottom="20dp"
-        app:codeStyle="1002"
+        app:strokeSize="5dp"
         app:codeLength="5"
         app:codeMargin="10dp"
+        app:codeStyle="1002"
         app:codeTextColor="@color/colorPrimary"
+        app:normalStrokeColor="#e00000ff"
+        app:focusContentColor="#ffff00"
+        app:focusStrokeColor="#00ffff"
+        app:normalContentColor="#a0ff0000"
+        app:isShowPwd="true"
         app:codeTextSize="24sp"
-        app:codeTvHeight="45dp"
-        app:codeTvWidth="45dp"
         app:isNumber="false"
-        app:isShowPwd="true" />
+        app:tvHeight="45dp"
+        app:tvWidth="45dp" />
 
 
     <com.longer.verifyedittext.PhoneCode
@@ -49,14 +56,16 @@
         android:layout_height="wrap_content"
         android:paddingTop="20dp"
         android:paddingBottom="20dp"
-        app:codeBgFocus="@drawable/verify_oval_bg_focus"
+        app:bgFocus="@drawable/verify_oval_bg_focus"
         app:bgNormal="@drawable/verify_oval_bg_normal"
         app:codeLength="4"
         app:codeMargin="10dp"
         app:codeTextColor="@color/colorPrimary"
         app:codeTextSize="24sp"
-        app:codeTvHeight="60dp"
-        app:codeTvWidth="60dp" />
+        app:isShowPwd="true"
+        app:tvHeight="60dp"
+        app:strokeSize="8sp"
+        app:tvWidth="60dp" />
 
 
     <TextView
@@ -73,10 +82,10 @@
         android:layout_width="100dp"
         android:layout_height="40dp"
         android:layout_gravity="center_horizontal"
-        android:background="#eb6951"
-        android:onClick="red"
         android:layout_marginTop="10dp"
+        android:background="#eb6951"
         android:gravity="center"
+        android:onClick="red"
         android:text="测试"
         android:textColor="@android:color/white" />
 

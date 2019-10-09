@@ -9,15 +9,15 @@
         <!-- 验证码字体颜色 -->
         <attr name="codeTextColor" format="color" />
         <!-- 验证码框的宽度 -->
-        <attr name="codeTvWidth" format="dimension" />
+        <attr name="tvWidth" format="dimension" />
         <!-- 验证码框的高度 -->
-        <attr name="codeTvHeight" format="dimension" />
+        <attr name="tvHeight" format="dimension" />
         <!-- 验证码框间距 -->
         <attr name="codeMargin" format="dimension" />
         <!-- 验证码默认背景 -->
         <attr name="bgNormal" format="reference" />
         <!-- 验证码焦点背景 -->
-        <attr name="codeBgFocus" format="reference" />
+        <attr name="bgFocus" format="reference" />
 
         <!--输入框样式-->
         <attr name="codeStyle" format="integer" />

@@ -15,8 +15,8 @@ import com.longer.verifyedittext.PhoneCode;
 public class PhoneCodeActivity extends AppCompatActivity {
 
     private PhoneCode phonecode;
-//    private PhoneCode phonecode2;
-//    private PhoneCode phonecode3;
+    private PhoneCode phonecode2;
+    private PhoneCode phonecode3;
     private TextView tvConfirm;
     private String vcode;
     private String vcode2;
@@ -31,15 +31,16 @@ public class PhoneCodeActivity extends AppCompatActivity {
         tvConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                phonecode.setText("");
-//                phonecode2.setText("");
-//                phonecode3.setText("");
+//                phonecode.setText("");
+                phonecode.setNumber(false);
+                phonecode2.setNumber(false);
+                phonecode3.setNumber(true);
             }
         });
 
         phonecode = findViewById(R.id.phonecode);
-//        phonecode2 = findViewById(R.id.phonecode2);
-//        phonecode3 = findViewById(R.id.phonecode3);
+        phonecode2 = findViewById(R.id.phonecode2);
+        phonecode3 = findViewById(R.id.phonecode3);
         setInputListener();
     }
 
@@ -58,28 +59,7 @@ public class PhoneCodeActivity extends AppCompatActivity {
             }
         });
 
-//        phonecode2.setOnVCodeCompleteListener(new PhoneCode.OnVCodeInputListener() {
-//            @Override
-//            public void vCodeComplete(String verificationCode) {
-//                vcode2 = verificationCode;
-//                Toast.makeText(PhoneCodeActivity.this, "验证码2: " + verificationCode, Toast.LENGTH_SHORT).show();
-//            }
-//
-//            @Override
-//            public void vCodeIncomplete(String verificationCode) {
-//            }
-//        });
-//        phonecode3.setOnVCodeCompleteListener(new PhoneCode.OnVCodeInputListener() {
-//            @Override
-//            public void vCodeComplete(String verificationCode) {
-//                vcode3 = verificationCode;
-//                Toast.makeText(PhoneCodeActivity.this, "验证码3: " + verificationCode, Toast.LENGTH_SHORT).show();
-//            }
-//
-//            @Override
-//            public void vCodeIncomplete(String verificationCode) {
-//            }
-//        });
+
     }
 
     @Override
@@ -94,8 +74,8 @@ public class PhoneCodeActivity extends AppCompatActivity {
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         phonecode.setText(savedInstanceState.getString("vcode"));
-//        phonecode2.setText(savedInstanceState.getString("vcode2"));
-//        phonecode3.setText(savedInstanceState.getString("vcode3"));
+        phonecode2.setText(savedInstanceState.getString("vcode2"));
+        phonecode3.setText(savedInstanceState.getString("vcode3"));
     }
 
     public void red(View view) {
@@ -108,8 +88,34 @@ public class PhoneCodeActivity extends AppCompatActivity {
 //        } else
 //            Log.i("longer", "不是");
 
-        phonecode.setCodeLength(4);
+//        phonecode.setCodeLength(4);
+//        phonecode.setBgNormal(R.drawable.bg_line_normal);
+//        phonecode.setBgFocus(R.drawable.bg_line_focus);
+//        phonecode3.setCodeTextSize(29);
+//        phonecode.setCodeTextColor(Color.parseColor("#D81B60"));
+//        phonecode3.setCodeTextColor(this.getResources().getColor(R.color.red));
+//        phonecode2.setTvHeight(40);
+//        phonecode2.setTvWidth(40);
+//        phonecode2.setCodeMargin(10);
+//        phonecode.setCodeMargin(-1);
 
-
+//        phonecode.setCodeStyle(1001);
+//        phonecode2.setCodeStyle(21000);
+//        phonecode3.setCodeStyle(1002);
+//        phonecode.setCodeTextSize(28);
+//        phonecode.setNormalStrokeColor(Color.RED);
+//        phonecode2.setNormalContentColor(Color.parseColor("#ae00e0"));
+//        phonecode.setFocusStrokeColor(Color.BLUE);
+//        phonecode2.setFocusContentColor(this.getResources().getColor(R.color.colorAccent));
+//        phonecode.setBold(true);
+//        phonecode.setStrokeSize(2);
+//        phonecode2.setStrokeSize(2);
+//        phonecode3.setStrokeSize(4);
+//        phonecode.setNumber(true);
+//        phonecode2.setNumber(true);
+//        phonecode3.setNumber(false);
+        phonecode.setShowPwd(false);
+        phonecode2.setShowPwd(false);
+        phonecode3.setShowPwd(false);
     }
 }

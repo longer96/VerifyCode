@@ -23,15 +23,17 @@ interface IPhoneCode {
     void setCodeLength(int size);
 
     //输入框默认背景
-    void setTvBgNormal(Drawable tvBgNormal);
-    void setTvBgNormal(int tvBgNormal);
+    void setBgNormal(Drawable tvBgNormal);
+
+    void setBgNormal(int tvBgNormal);
 
     //输入框焦点背景
-    void setTvBgFocus(Drawable tvBgFocus);
-    void setTvBgFocus(int tvBgFocus);
+    void setBgFocus(Drawable tvBgFocus);
+
+    void setBgFocus(int tvBgFocus);
 
     //输入框的间距
-    void setTvMargin(int tvMargin);
+    void setCodeMargin(int tvMargin);
 
     //TextView宽
     void setTvWidth(int tvWidth);
@@ -40,31 +42,35 @@ interface IPhoneCode {
     void setTvHeight(int tvHeight);
 
     //TextView字体颜色
-    void setTvTextColor(int tvTextColor);
+    void setCodeTextColor(int tvTextColor);
 
     //TextView字体大小
-    void setTvTextSize(float tvTextSize);
+
+    /**
+     * 单位px
+     */
+    void setCodeTextSize(float tvTextSize);
 
     //输入框样式  1000：方框（默认）  1001：圆圈  1002：下划线
-    void setTvBgStyle(int tvBgStyle);
+    void setCodeStyle(int tvBgStyle);
 
     //正常时边框颜色
-    void setTvNormalColorStroke(int tvNormalColorStroke);
+    void setNormalStrokeColor(int tvNormalColorStroke);
 
     //正常时内容颜色
-    void setTvNormalColorContent(int tvNormalColorContent);
+    void setNormalContentColor(int tvNormalColorContent);
 
     //选中时边框颜色
-    void setTvFocusColorStroke(int tvFocusColorStroke);
+    void setFocusStrokeColor(int tvFocusColorStroke);
 
     //选中时内容颜色
-    void setTvFocusColorContent(int tvFocusColorContent);
+    void setFocusContentColor(int tvFocusColorContent);
 
     //TextView是否加粗
     void setBold(Boolean bold);
 
     //边框的宽度
-    void setTvStrokeSize(int tvStrokeSize);
+    void setStrokeSize(int tvStrokeSize);
 
     //是否输入类型为数字
     void setNumber(Boolean number);

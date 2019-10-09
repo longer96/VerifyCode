@@ -18,10 +18,13 @@ import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +39,7 @@ public class PhoneCode extends RelativeLayout implements IPhoneCode {
     //输入的长度
     private int codeLength = 5;
     //输入的内容
-    private String inputData;
+    private String inputData = "";
     private EditText editText;
 
     //TextView的list
@@ -103,10 +106,10 @@ public class PhoneCode extends RelativeLayout implements IPhoneCode {
             } else if (attr == R.styleable.PhoneCode_codeTextSize) {
                 //验证码字体大小
                 tvTextSize = typedArray.getDimensionPixelSize(attr, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 33, getResources().getDisplayMetrics()));
-            } else if (attr == R.styleable.PhoneCode_codeTvWidth) {
+            } else if (attr == R.styleable.PhoneCode_tvWidth) {
                 //方框宽度
                 tvWidth = typedArray.getDimensionPixelSize(attr, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 45, getResources().getDisplayMetrics()));
-            } else if (attr == R.styleable.PhoneCode_codeTvHeight) {
+            } else if (attr == R.styleable.PhoneCode_tvHeight) {
                 //方框宽度
                 tvHeight = typedArray.getDimensionPixelSize(attr, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 45, getResources().getDisplayMetrics()));
             } else if (attr == R.styleable.PhoneCode_codeMargin) {
@@ -117,7 +120,7 @@ public class PhoneCode extends RelativeLayout implements IPhoneCode {
                 int mtvBgNormal = typedArray.getResourceId(attr, R.drawable.verify_rectangel_bg_normal);
                 tvBgNormal = getResources().getDrawable(mtvBgNormal);
                 isSetTvBgNormal = true;
-            } else if (attr == R.styleable.PhoneCode_codeBgFocus) {
+            } else if (attr == R.styleable.PhoneCode_bgFocus) {
                 //焦点背景
                 int mtvBgFocus = typedArray.getResourceId(attr, R.drawable.verify_rectangle_bg_focus);
                 tvBgFocus = getResources().getDrawable(mtvBgFocus);
@@ -222,7 +225,6 @@ public class PhoneCode extends RelativeLayout implements IPhoneCode {
                 layoutParams.rightMargin = 0;
             } else {
                 layoutParams.rightMargin = tvMarginRight;
-                Log.i("longer", "间隔宽度:" + tvMarginRight);
             }
 
             textView.setLayoutParams(layoutParams);
@@ -235,22 +237,22 @@ public class PhoneCode extends RelativeLayout implements IPhoneCode {
                 textView.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
             textView.setTextColor(tvTextColor);
             tvList.add(textView);
-            setTvBg(textView);
         }
+        setTvBg();
     }
 
     //如果用户没有设置自定义默认背景
-    private void setTvBg(TextView textView) {
+    private void setTvBg() {
+        //通过代码动态修改样式 - normal  未选中状态
         if (!isSetTvBgNormal) {
-            //通过代码动态修改样式 - normal
             Drawable draw_normal = tvBgNormal;
             if (draw_normal instanceof GradientDrawable) {
                 //方框和圆圈样式
                 GradientDrawable gradientDrawable = (GradientDrawable) draw_normal;
                 gradientDrawable.setColor(tvNormalColorContent);
                 gradientDrawable.setStroke(tvStrokeSize, tvNormalColorStroke);
-                Log.i("longer", "边框宽度:" + px2dp(tvStrokeSize) + "   -   " + tvStrokeSize);
-                textView.setBackground(gradientDrawable);
+                tvBgNormal = gradientDrawable;
+//                textView.setBackground(gradientDrawable);
             } else if (draw_normal instanceof LayerDrawable) {
                 //下划线样式
                 LayerDrawable layerDrawable = (LayerDrawable) draw_normal;
@@ -260,19 +262,22 @@ public class PhoneCode extends RelativeLayout implements IPhoneCode {
                 //内容颜色
                 GradientDrawable drawable2 = (GradientDrawable) layerDrawable.getDrawable(1);
                 drawable2.setColor(tvNormalColorContent == Color.TRANSPARENT ? Color.WHITE : tvNormalColorContent);
-                textView.setBackground(drawable1);
+                tvBgNormal = layerDrawable;
+//                textView.setBackground(layerDrawable);
             }
         }
 
+        //通过代码动态修改样式 - focus  选中状态
         if (!isSetTvBgFocus) {
-            //通过代码动态修改样式 - focus
             Drawable draw_focus = tvBgFocus;
             if (draw_focus instanceof GradientDrawable) {
                 //方框和圆圈样式
                 GradientDrawable gradientDrawable = (GradientDrawable) draw_focus;
                 gradientDrawable.setColor(tvFocusColorContent);
                 gradientDrawable.setStroke(tvStrokeSize, tvFocusColorStroke);
-                textView.setBackground(gradientDrawable);
+                tvBgFocus = gradientDrawable;
+                //选中的不用设置  因为要通过焦点设置 如果设置会覆盖掉上面的
+//                textView.setBackground(gradientDrawable);
             } else if (draw_focus instanceof LayerDrawable) {
                 //下划线样式
                 LayerDrawable layerDrawable = (LayerDrawable) draw_focus;
@@ -281,8 +286,10 @@ public class PhoneCode extends RelativeLayout implements IPhoneCode {
                 drawable1.setColor(tvFocusColorStroke);
                 //内容颜色
                 GradientDrawable drawable2 = (GradientDrawable) layerDrawable.getDrawable(1);
-                drawable2.setColor(tvNormalColorContent == Color.TRANSPARENT ? Color.WHITE : tvNormalColorContent);
-                textView.setBackground(drawable1);
+                drawable2.setColor(tvFocusColorContent == Color.TRANSPARENT ? Color.WHITE : tvFocusColorContent);
+                tvBgFocus = layerDrawable;
+                //选中的不用设置  因为要通过焦点设置 如果设置会覆盖掉上面的
+//                textView.setBackground(layerDrawable);
             }
         }
     }
@@ -380,9 +387,12 @@ public class PhoneCode extends RelativeLayout implements IPhoneCode {
     private void tvSetFocus(TextView textView) {
         for (int i = 0; i < codeLength; i++) {
             tvList.get(i).setBackground(tvBgNormal);
+            //用来刷新背景
+            tvList.get(i).invalidateDrawable(tvBgNormal);
         }
         //重新获取焦点
         textView.setBackground(tvBgFocus);
+        textView.invalidateDrawable(tvBgFocus);
     }
 
     public int dp2px(final float dpValue) {
@@ -415,6 +425,18 @@ public class PhoneCode extends RelativeLayout implements IPhoneCode {
         editText.setText(inputData);
     }
 
+    /**
+     * 隐藏软键盘(有输入框)
+     *
+     * @param context
+     * @param mEditText
+     */
+    public static void hideSoftKeyboard(@NonNull Context context, @NonNull EditText mEditText) {
+        InputMethodManager inputmanger = (InputMethodManager) context
+                .getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputmanger.hideSoftInputFromWindow(mEditText.getWindowToken(), 0);
+    }
+
     @Override
     public void setOnVCodeCompleteListener(IPhoneCode.OnVCodeInputListener OnVCodeInputListener) {
         this.onVCodeInputListener = OnVCodeInputListener;
@@ -428,31 +450,44 @@ public class PhoneCode extends RelativeLayout implements IPhoneCode {
     }
 
     @Override
-    public void setTvBgNormal(Drawable tvBgNormal) {
-        this.tvBgNormal = tvBgNormal;
+    public void setBgNormal(Drawable tvBgNormal) {
+        if (tvBgNormal != null) {
+            this.tvBgNormal = tvBgNormal;
+            isSetTvBgNormal = true;
+        } else {
+            isSetTvBgNormal = false;
+            this.tvBgNormal = getResources().getDrawable(R.drawable.verify_rectangel_bg_normal);
+        }
         tvSetFocus();
     }
 
     @Override
-    public void setTvBgNormal(int tvBgNormal) {
+    public void setBgNormal(int tvBgNormal) {
         this.tvBgNormal = getResources().getDrawable(tvBgNormal);
+        isSetTvBgNormal = true;
         tvSetFocus();
     }
 
     @Override
-    public void setTvBgFocus(Drawable tvBgFocus) {
-        this.tvBgFocus = tvBgFocus;
+    public void setBgFocus(Drawable tvBgFocus) {
+        if (tvBgFocus != null) {
+            this.tvBgFocus = tvBgFocus;
+            isSetTvBgFocus = true;
+        } else {
+            isSetTvBgFocus = false;
+        }
         tvSetFocus();
     }
 
     @Override
-    public void setTvBgFocus(int tvBgFocus) {
+    public void setBgFocus(int tvBgFocus) {
         this.tvBgFocus = getResources().getDrawable(tvBgFocus);
+        isSetTvBgFocus = true;
         tvSetFocus();
     }
 
     @Override
-    public void setTvMargin(int tvMargin) {
+    public void setCodeMargin(int tvMargin) {
         this.tvMarginRight = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, tvMargin, getResources().getDisplayMetrics());
         for (int i = 0; i < codeLength; i++) {
             LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) tvList.get(i).getLayoutParams();
@@ -487,7 +522,7 @@ public class PhoneCode extends RelativeLayout implements IPhoneCode {
     }
 
     @Override
-    public void setTvTextColor(int tvTextColor) {
+    public void setCodeTextColor(int tvTextColor) {
         this.tvTextColor = tvTextColor;
         for (int i = 0; i < codeLength; i++) {
             tvList.get(i).setTextColor(this.tvTextColor);
@@ -495,49 +530,45 @@ public class PhoneCode extends RelativeLayout implements IPhoneCode {
     }
 
     @Override
-    public void setTvTextSize(float tvTextSize) {
+    public void setCodeTextSize(float tvTextSize) {
         this.tvTextSize = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, tvTextSize, getResources().getDisplayMetrics());
         for (int i = 0; i < codeLength; i++) {
-            tvList.get(i).setTextColor(this.tvTextColor);
+            tvList.get(i).setTextSize(TypedValue.COMPLEX_UNIT_PX, this.tvTextSize);
         }
     }
 
     @Override
-    public void setTvBgStyle(int tvBgStyle) {
+    public void setCodeStyle(int tvBgStyle) {
         this.tvBgStyle = tvBgStyle;
         init();
     }
 
     @Override
-    public void setTvNormalColorStroke(int tvNormalColorStroke) {
+    public void setNormalStrokeColor(int tvNormalColorStroke) {
         this.tvNormalColorStroke = tvNormalColorStroke;
-        for (int i = 0; i < codeLength; i++) {
-            setTvBg(tvList.get(i));
-        }
+        setTvBg();
+        tvSetFocus();
     }
 
     @Override
-    public void setTvNormalColorContent(int tvNormalColorContent) {
+    public void setNormalContentColor(int tvNormalColorContent) {
         this.tvNormalColorContent = tvNormalColorContent;
-        for (int i = 0; i < codeLength; i++) {
-            setTvBg(tvList.get(i));
-        }
+        setTvBg();
+        tvSetFocus();
     }
 
     @Override
-    public void setTvFocusColorStroke(int tvFocusColorStroke) {
+    public void setFocusStrokeColor(int tvFocusColorStroke) {
         this.tvFocusColorStroke = tvFocusColorStroke;
-        for (int i = 0; i < codeLength; i++) {
-            setTvBg(tvList.get(i));
-        }
+        setTvBg();
+        tvSetFocus();
     }
 
     @Override
-    public void setTvFocusColorContent(int tvFocusColorContent) {
+    public void setFocusContentColor(int tvFocusColorContent) {
         this.tvFocusColorContent = tvFocusColorContent;
-        for (int i = 0; i < codeLength; i++) {
-            setTvBg(tvList.get(i));
-        }
+        setTvBg();
+        tvSetFocus();
     }
 
     @Override
@@ -549,24 +580,24 @@ public class PhoneCode extends RelativeLayout implements IPhoneCode {
     }
 
     @Override
-    public void setTvStrokeSize(int tvStrokeSize) {
+    public void setStrokeSize(int tvStrokeSize) {
         this.tvStrokeSize = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, tvStrokeSize, getResources().getDisplayMetrics());
-        for (int i = 0; i < codeLength; i++) {
-            setTvBg(tvList.get(i));
-        }
+        setTvBg();
+        tvSetFocus();
     }
 
     @Override
     public void setNumber(Boolean number) {
         this.isNumber = number;
-        editText.setInputType(number ? InputType.TYPE_CLASS_NUMBER : InputType.TYPE_NULL);
+        editText.setInputType(number ? InputType.TYPE_CLASS_NUMBER : InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_NORMAL);
+        editText.setText("");
+        inputData = "";
     }
 
     @Override
     public void setShowPwd(Boolean showPwd) {
         this.isShowPwd = showPwd;
-        editText.setText("");
-        inputData = "";
+        editText.setText(inputData);
     }
     //---------------- set end -------------
 
