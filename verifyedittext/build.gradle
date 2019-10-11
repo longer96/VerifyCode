@@ -37,7 +37,7 @@ dependencies {
 
 //添加
 publish {
-    repoName = ' maven'//远程仓库名字,不指明，默认是上传到maven
+    repoName = 'maven'//远程仓库名字,不指明，默认是上传到maven
     userOrg = 'longer496'//bintray.com用户名
     groupId = 'com.longer'//jcenter上的路径
     artifactId = 'verifycode'//项目名称
