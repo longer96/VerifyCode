@@ -14,18 +14,15 @@
         android:layout_marginTop="30dp"
         android:gravity="center"
         android:text="输入车牌号"
+        android:layout_marginBottom="30dp"
         android:textColor="#000000"
         android:textSize="28dp" />
+
 
     <com.longer.verifyedittext.PhoneCode
         android:id="@+id/phonecode"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="30dp"
-        android:paddingBottom="20dp"
-        app:isShowPwd="true"
-        app:isBold="false"
-        app:strokeSize="1dp"/>
+        android:layout_height="wrap_content"/>
 
 
     <com.longer.verifyedittext.PhoneCode
@@ -34,6 +31,7 @@
         android:layout_height="wrap_content"
         android:paddingTop="20dp"
         android:paddingBottom="20dp"
+        android:layout_marginTop="20dp"
         app:strokeSize="5dp"
         app:codeLength="5"
         app:codeMargin="10dp"
@@ -67,6 +65,17 @@
         app:strokeSize="8sp"
         app:tvWidth="60dp" />
 
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:background="#eb6951"
+        android:gravity="center"
+        android:onClick="red"
+        android:text="测试"
+        android:textColor="@android:color/white" />
+
 
     <TextView
         android:id="@+id/tvConfirm1"
@@ -78,15 +87,5 @@
         android:text="clear"
         android:textColor="@android:color/white" />
 
-    <TextView
-        android:layout_width="100dp"
-        android:layout_height="40dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
-        android:background="#eb6951"
-        android:gravity="center"
-        android:onClick="red"
-        android:text="测试"
-        android:textColor="@android:color/white" />
 
 </LinearLayout>

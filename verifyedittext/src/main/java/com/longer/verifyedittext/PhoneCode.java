@@ -13,7 +13,6 @@ import android.text.InputType;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.ViewGroup;
@@ -24,14 +23,11 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class PhoneCode extends RelativeLayout implements IPhoneCode {
-//TODO   验证码输入完成后失去焦点
-//TODO : 键盘的弹出隐藏
 
     //暴露给外面的接口
     private IPhoneCode.OnVCodeInputListener onVCodeInputListener;
@@ -354,12 +350,14 @@ public class PhoneCode extends RelativeLayout implements IPhoneCode {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (null != onVCodeInputListener) {
-                    if (s.length() == codeLength) {
+                if (s.length() == codeLength) {
+                    //隐藏软键盘
+                    hideKeyboard();
+                    if (null != onVCodeInputListener)
                         onVCodeInputListener.vCodeComplete(s.toString());
-                    } else {
+                } else {
+                    if (null != onVCodeInputListener)
                         onVCodeInputListener.vCodeIncomplete(s.toString());
-                    }
                 }
             }
         });
@@ -395,25 +393,25 @@ public class PhoneCode extends RelativeLayout implements IPhoneCode {
         textView.invalidateDrawable(tvBgFocus);
     }
 
-    public int dp2px(final float dpValue) {
-        final float scale = getContext().getResources().getDisplayMetrics().density;
-        return (int) (dpValue * scale + 0.5f);
-    }
-
-    public int px2dp(final float pxValue) {
-        final float scale = getContext().getResources().getDisplayMetrics().density;
-        return (int) (pxValue / scale + 0.5f);
-    }
-
-    public int sp2px(final float spValue) {
-        final float fontScale = getContext().getResources().getDisplayMetrics().scaledDensity;
-        return (int) (spValue * fontScale + 0.5f);
-    }
-
-    public int px2sp(final float pxValue) {
-        final float fontScale = getContext().getResources().getDisplayMetrics().scaledDensity;
-        return (int) (pxValue / fontScale + 0.5f);
-    }
+//    public int dp2px(final float dpValue) {
+//        final float scale = getContext().getResources().getDisplayMetrics().density;
+//        return (int) (dpValue * scale + 0.5f);
+//    }
+//
+//    public int px2dp(final float pxValue) {
+//        final float scale = getContext().getResources().getDisplayMetrics().density;
+//        return (int) (pxValue / scale + 0.5f);
+//    }
+//
+//    public int sp2px(final float spValue) {
+//        final float fontScale = getContext().getResources().getDisplayMetrics().scaledDensity;
+//        return (int) (spValue * fontScale + 0.5f);
+//    }
+//
+//    public int px2sp(final float pxValue) {
+//        final float fontScale = getContext().getResources().getDisplayMetrics().scaledDensity;
+//        return (int) (pxValue / fontScale + 0.5f);
+//    }
 
     //---------------- set begin -------------
 
@@ -427,14 +425,12 @@ public class PhoneCode extends RelativeLayout implements IPhoneCode {
 
     /**
      * 隐藏软键盘(有输入框)
-     *
-     * @param context
-     * @param mEditText
      */
-    public static void hideSoftKeyboard(@NonNull Context context, @NonNull EditText mEditText) {
-        InputMethodManager inputmanger = (InputMethodManager) context
-                .getSystemService(Context.INPUT_METHOD_SERVICE);
-        inputmanger.hideSoftInputFromWindow(mEditText.getWindowToken(), 0);
+    public void hideKeyboard() {
+        InputMethodManager inputmanger = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (inputmanger != null) {
+            inputmanger.hideSoftInputFromWindow(editText.getWindowToken(), 0);
+        }
     }
 
     @Override

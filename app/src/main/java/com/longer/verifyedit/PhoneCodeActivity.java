@@ -4,12 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.longer.verifyedittext.BankInfoBean;
 import com.longer.verifyedittext.PhoneCode;
 
 public class PhoneCodeActivity extends AppCompatActivity {
@@ -114,8 +112,9 @@ public class PhoneCodeActivity extends AppCompatActivity {
 //        phonecode.setNumber(true);
 //        phonecode2.setNumber(true);
 //        phonecode3.setNumber(false);
-        phonecode.setShowPwd(false);
-        phonecode2.setShowPwd(false);
-        phonecode3.setShowPwd(false);
+//        phonecode.setShowPwd(false);
+//        phonecode2.setShowPwd(false);
+//        phonecode3.setShowPwd(false);
+//        phonecode2.hideKeyboard();
     }
 }
