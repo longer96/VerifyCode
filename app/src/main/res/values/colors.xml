@@ -4,4 +4,6 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="red">#ff0000</color>
+    <color name="orange">#eb6951</color>
+    <color name="divide_color">#888888</color>
 </resources>

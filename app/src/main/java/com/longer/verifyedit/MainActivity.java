@@ -4,10 +4,14 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.longer.verifyedittext.BankInfoBean;
 import com.longer.verifyedittext.PhoneCode;
 
 public class MainActivity extends AppCompatActivity {
@@ -24,10 +28,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initView();
+        initYzmView();
+        initBackView();
     }
 
-    private void initView() {
+    private void initYzmView() {
         tvConfirm = findViewById(R.id.tvConfirm1);
         tvConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,7 +50,9 @@ public class MainActivity extends AppCompatActivity {
         setInputListener();
     }
 
-
+    /**
+     * 验证码监听
+     */
     private void setInputListener() {
         phonecode.setOnVCodeCompleteListener(new PhoneCode.OnVCodeInputListener() {
             @Override
@@ -121,5 +128,42 @@ public class MainActivity extends AppCompatActivity {
 //        phonecode3.setShowPwd(false);
 //        phonecode2.hideKeyboard();
     }
+
+    private EditText et_cardnum;
+    private TextView tv_bankname;
+    private TextView tv_cardtype;
+    private String cardnum;
+    private BankInfoBean bankinfobean;
+    private Button btn_get;
+
+    private void initBackView() {
+        et_cardnum = (EditText) findViewById(R.id.et_cardnum);
+        tv_bankname = (TextView) findViewById(R.id.tv_bankname);
+        tv_cardtype = (TextView) findViewById(R.id.tv_cardtype);
+        btn_get = (Button) findViewById(R.id.tv_get);
+
+        btn_get.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cardnum = et_cardnum.getText().toString().trim();
+                if (cardnum != null && checkBankCard()) {
+                    bankinfobean = new BankInfoBean(cardnum);
+                    tv_bankname.setText(bankinfobean.getBankName());
+                    tv_cardtype.setText(bankinfobean.getCardType());
+                } else {
+                    Toast.makeText(MainActivity.this, "卡号 " + cardnum + " 不合法,请重新输入", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+    }
+
+    /**
+     * 验证银行卡是否有效
+     * @return
+     */
+    private boolean checkBankCard() {
+        return bankinfobean.checkBankCard(cardnum);
+    }
+
 
 }

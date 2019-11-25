@@ -224,7 +224,7 @@ public class PhoneCode extends RelativeLayout implements IPhoneCode {
             }
 
             textView.setLayoutParams(layoutParams);
-            textView.setBackground(tvBgNormal);
+            textView.setBackgroundDrawable(tvBgNormal);
             textView.setGravity(Gravity.CENTER);
             //注意单位
             textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, tvTextSize);
@@ -384,12 +384,12 @@ public class PhoneCode extends RelativeLayout implements IPhoneCode {
 
     private void tvSetFocus(TextView textView) {
         for (int i = 0; i < codeLength; i++) {
-            tvList.get(i).setBackground(tvBgNormal);
+            tvList.get(i).setBackgroundDrawable(tvBgNormal);
             //用来刷新背景
             tvList.get(i).invalidateDrawable(tvBgNormal);
         }
         //重新获取焦点
-        textView.setBackground(tvBgFocus);
+        textView.setBackgroundDrawable(tvBgFocus);
         textView.invalidateDrawable(tvBgFocus);
     }
 
