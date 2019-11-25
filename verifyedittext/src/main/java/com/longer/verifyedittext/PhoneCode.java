@@ -70,7 +70,7 @@ public class PhoneCode extends RelativeLayout implements IPhoneCode {
     //选中时内容颜色
     private int tvFocusColorContent = Color.TRANSPARENT;
     //TextView是否加粗
-    private Boolean isBold = true;
+    private Boolean isBold = false;
     //边框的宽度
     private int tvStrokeSize = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1, getResources().getDisplayMetrics());
     //是否输入类型为数字
@@ -138,7 +138,7 @@ public class PhoneCode extends RelativeLayout implements IPhoneCode {
                 tvFocusColorContent = typedArray.getColor(attr, Color.TRANSPARENT);
             } else if (attr == R.styleable.PhoneCode_isBold) {
                 //是否加粗
-                isBold = typedArray.getBoolean(attr, true);
+                isBold = typedArray.getBoolean(attr, false);
             } else if (attr == R.styleable.PhoneCode_strokeSize) {
                 //边框的宽度
                 tvStrokeSize = typedArray.getDimensionPixelSize(attr, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1, getResources().getDisplayMetrics()));
