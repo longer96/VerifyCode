@@ -38,6 +38,19 @@
         </LinearLayout>
 
         <com.longer.verifyedittext.PhoneCode
+            android:layout_width="wrap_content"
+            android:layout_marginBottom="60dp"
+            app:isNumber="false"
+            app:tvHeight="45dp"
+            app:tvWidth="45dp"
+            app:codeMargin="2dp"
+            app:codeTextSize="25sp"
+            app:codeTextColor="@color/colorAccent"
+            app:codeLength="7"
+            android:layout_height="wrap_content"/>
+
+
+        <com.longer.verifyedittext.PhoneCode
             android:id="@+id/phonecode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -61,7 +74,7 @@
             app:isShowPwd="false"
             app:normalContentColor="#fff"
             app:normalStrokeColor="#eee"
-            app:strokeSize="5dp"
+            app:strokeSize="5sp"
             app:tvHeight="45dp"
             app:tvWidth="45dp" />
 
@@ -96,10 +109,10 @@
             android:layout_marginTop="30dp"
             android:background="@drawable/shape_btn"
             android:gravity="center"
-            android:visibility="gone"
             android:onClick="red"
             android:text="修改属性"
-            android:textColor="@android:color/white" />
+            android:textColor="@android:color/white"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/tvConfirm1"
@@ -138,10 +151,10 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_marginLeft="29dp"
-            android:layout_marginRight="26dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="29dp"
+            android:layout_marginRight="26dp"
             android:orientation="vertical">
 
             <LinearLayout
@@ -235,15 +248,15 @@
                 android:id="@+id/tv_get"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="60dp"
-                android:text="获取数据"
-                android:textColor="#ffffff"
                 android:layout_marginBottom="30dp"
-                android:textSize="14sp"
+                android:background="@drawable/shape_btn"
                 android:paddingLeft="30dp"
                 android:paddingRight="30dp"
-                android:background="@drawable/shape_btn"
-                android:layout_gravity="center_horizontal"/>
+                android:text="获取数据"
+                android:textColor="#ffffff"
+                android:textSize="14sp" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>
