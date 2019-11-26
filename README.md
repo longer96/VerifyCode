@@ -29,19 +29,19 @@ Introduction
 ScreenCapture
 ----
 
-<br><br><img width="200px" style="max-width:100%;" src="https://github.com/longer96/VerifyCode/blob/master/images/p1.png"/>
+<br><br><img width="400px" style="max-width:100%;" src="https://github.com/longer96/VerifyCode/blob/master/images/p1.png"/>
 
-<br><br><img width="200px" style="max-width:100%;" src="https://github.com/longer96/VerifyCode/blob/master/images/p2.png"/>
+<br><br><img width="500px" style="max-width:100%;" src="https://github.com/longer96/VerifyCode/blob/master/images/p2.png"/>
 
-* 密码输入 app:isShowPwd <br><br><img width="200px" style="max-width:100%;" src="https://github.com/longer96/VerifyCode/blob/master/images/p4.png"/>
+* 密码输入 app:isShowPwd <br><br><img width="500px" style="max-width:100%;" src="https://github.com/longer96/VerifyCode/blob/master/images/p4.png"/>
 
 * 可以通过自定义背景，实现很多样式
   * app:bgFocus="@drawable/bg_line_center_normal" 中划线  [bg_line_center_normal.xml](/app/src/main/res/drawable/bg_line_center_normal.xml)
   * app:bgFocus="@drawable/bg_blue_radiu5_solid"  圆角矩形  [bg_blue_radiu5_solid.xml](/app/src/main/res/drawable/bg_blue_radiu5_solid.xml)
-<br><br><img width="200px" style="max-width:100%;" src="https://github.com/longer96/VerifyCode/blob/master/images/p3.png"/>
+<br><br><img width="500px" style="max-width:100%;" src="https://github.com/longer96/VerifyCode/blob/master/images/p3.png"/>
 
 * 文字输入，字体颜色修改
-<br><br><img width="200px" style="max-width:100%;" src="https://github.com/longer96/VerifyCode/blob/master/images/p5.png"/>
+<br><br><img width="500px" style="max-width:100%;" src="https://github.com/longer96/VerifyCode/blob/master/images/p5.png"/>
 
 
 Function instruction
