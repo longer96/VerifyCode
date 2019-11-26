@@ -5,5 +5,6 @@
     <color name="colorAccent">#D81B60</color>
     <color name="red">#ff0000</color>
     <color name="orange">#eb6951</color>
+    <color name="blue">#4E8FE7</color>
     <color name="divide_color">#888888</color>
 </resources>

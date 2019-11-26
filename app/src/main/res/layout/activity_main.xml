@@ -24,9 +24,9 @@
 
             <View
                 android:layout_width="3dp"
-                android:layout_height="24dp"
+                android:layout_height="20dp"
                 android:layout_marginLeft="16dp"
-                android:background="@color/colorPrimary" />
+                android:background="@color/blue" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -34,7 +34,7 @@
                 android:layout_marginLeft="10dp"
                 android:text="验证码输入框"
                 android:textColor="#000000"
-                android:textSize="20dp" />
+                android:textSize="18sp" />
         </LinearLayout>
 
         <com.longer.verifyedittext.PhoneCode
@@ -58,7 +58,7 @@
             app:focusContentColor="#fff"
             app:focusStrokeColor="#eb6951"
             app:isNumber="false"
-            app:isShowPwd="true"
+            app:isShowPwd="false"
             app:normalContentColor="#fff"
             app:normalStrokeColor="#eee"
             app:strokeSize="5dp"
@@ -78,7 +78,7 @@
             app:codeMargin="10dp"
             app:codeTextColor="@color/colorPrimary"
             app:codeTextSize="24sp"
-            app:isShowPwd="true"
+            app:isShowPwd="false"
             app:strokeSize="8sp"
             app:tvHeight="60dp"
             app:tvWidth="60dp" />
@@ -96,8 +96,9 @@
             android:layout_marginTop="30dp"
             android:background="@drawable/shape_btn"
             android:gravity="center"
+            android:visibility="gone"
             android:onClick="red"
-            android:text="测试"
+            android:text="修改属性"
             android:textColor="@android:color/white" />
 
         <TextView
@@ -105,7 +106,7 @@
             android:layout_width="100dp"
             android:layout_height="40dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="30dp"
             android:layout_marginBottom="40dp"
             android:background="@drawable/shape_btn"
             android:gravity="center"
@@ -117,15 +118,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="12dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <View
                 android:layout_width="3dp"
-                android:layout_height="24dp"
+                android:layout_height="20dp"
                 android:layout_marginLeft="16dp"
-                android:background="@color/orange" />
+                android:background="@color/blue" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -133,11 +134,11 @@
                 android:layout_marginLeft="10dp"
                 android:text="银行卡信息匹配"
                 android:textColor="#000000"
-                android:textSize="20dp" />
+                android:textSize="18sp" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_marginLeft="16dp"
+            android:layout_marginLeft="29dp"
             android:layout_marginRight="26dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -234,7 +235,7 @@
                 android:id="@+id/tv_get"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="80dp"
+                android:layout_marginTop="60dp"
                 android:text="获取数据"
                 android:textColor="#ffffff"
                 android:layout_marginBottom="30dp"

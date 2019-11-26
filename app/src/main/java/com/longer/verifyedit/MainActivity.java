@@ -59,12 +59,10 @@ public class MainActivity extends AppCompatActivity {
             public void vCodeComplete(String verificationCode) {
                 vcode = verificationCode;
                 Toast.makeText(MainActivity.this, "验证码: " + verificationCode, Toast.LENGTH_SHORT).show();
-                tvConfirm.setBackgroundColor(Color.parseColor("#eb6951"));
             }
 
             @Override
             public void vCodeIncomplete(String verificationCode) {
-                tvConfirm.setBackgroundColor(Color.parseColor("#aaaaaa"));
             }
         });
 
@@ -132,22 +130,24 @@ public class MainActivity extends AppCompatActivity {
     private EditText et_cardnum;
     private TextView tv_bankname;
     private TextView tv_cardtype;
-    private String cardnum;
     private BankInfoBean bankinfobean;
     private Button btn_get;
 
     private void initBackView() {
-        et_cardnum = (EditText) findViewById(R.id.et_cardnum);
-        tv_bankname = (TextView) findViewById(R.id.tv_bankname);
-        tv_cardtype = (TextView) findViewById(R.id.tv_cardtype);
-        btn_get = (Button) findViewById(R.id.tv_get);
+        et_cardnum = findViewById(R.id.et_cardnum);
+        tv_bankname = findViewById(R.id.tv_bankname);
+        tv_cardtype = findViewById(R.id.tv_cardtype);
+        btn_get = findViewById(R.id.tv_get);
 
         btn_get.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cardnum = et_cardnum.getText().toString().trim();
-                if (cardnum != null && checkBankCard()) {
-                    bankinfobean = new BankInfoBean(cardnum);
+                String cardnum = et_cardnum.getText().toString().trim();
+//                或者这样
+//                bankinfobean = new BankInfoBean();
+//                bankinfobean.setTotalBankcode(cardnum);
+                bankinfobean = new BankInfoBean(cardnum);
+                if (cardnum != null && checkBankCard(cardnum)) {
                     tv_bankname.setText(bankinfobean.getBankName());
                     tv_cardtype.setText(bankinfobean.getCardType());
                 } else {
@@ -159,9 +159,11 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * 验证银行卡是否有效
+     *
+     * @param cardnum
      * @return
      */
-    private boolean checkBankCard() {
+    private boolean checkBankCard(String cardnum) {
         return bankinfobean.checkBankCard(cardnum);
     }
 

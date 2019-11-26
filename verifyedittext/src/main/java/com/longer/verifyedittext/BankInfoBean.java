@@ -459,7 +459,7 @@ public class BankInfoBean {
     public BankInfoBean() {
     }
 
-    public void setBankcode(String totalBankcode) {
+    public void setTotalBankcode(String totalBankcode) {
         this.totalBankcode = totalBankcode;
     }
 
