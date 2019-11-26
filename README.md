@@ -1,6 +1,16 @@
 一个自定义的安卓验证码输入框控件、银行卡归属类型查询。
 ==========
 
+Dependency
+----
+- #### Gradle
+
+```groovy
+dependencies {
+    implementation 'com.longer:verifycode:1.0.3'
+}
+```
+
 Introduction
 ----
 ![image](https://img.shields.io/badge/api-%2B14-blue.svg)
@@ -19,10 +29,9 @@ Introduction
 ScreenCapture
 ----
 
-![CircleView](/images/p1.png)
+<br><br><img width="200px" style="max-width:100%;" src="\images\p1.png"/>
 
-![](/images/p2.png)
-<br><br><img width="200px" style="max-width:100%;" src="https://github.com/longer96/CDTU/blob/master/images/%E6%B6%88%E8%B4%B9%E8%AE%B0%E5%BD%95.gif"/>
+<br><br><img width="200px" style="max-width:100%;" src="\images\p2.png"/>
 
 * 密码输入 app:isShowPwd <br><br><img width="200px" style="max-width:100%;" src="\images\p4.png"/>
 
@@ -34,15 +43,6 @@ ScreenCapture
 * 文字输入，字体颜色修改
 <br><br><img width="200px" style="max-width:100%;" src="\images\p4.png"/>
 
-Dependency
-----
-- #### Gradle
-
-```groovy
-dependencies {
-    implementation 'com.longer:verifycode:1.0.2'
-}
-```
 
 Attributes
 =========
@@ -101,7 +101,6 @@ Example
     app:tvHeight="45dp"
     app:tvWidth="45dp" />
 ```
-
 
 - #### 验证码java
 ```java

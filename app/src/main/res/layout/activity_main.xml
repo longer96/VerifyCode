@@ -38,23 +38,9 @@
         </LinearLayout>
 
         <com.longer.verifyedittext.PhoneCode
-            android:layout_width="wrap_content"
-            android:layout_marginBottom="60dp"
-            app:isNumber="false"
-            app:tvHeight="45dp"
-            app:tvWidth="45dp"
-            app:codeMargin="2dp"
-            app:codeTextSize="25sp"
-            app:codeTextColor="@color/colorAccent"
-            app:codeLength="7"
-            android:layout_height="wrap_content"/>
-
-
-        <com.longer.verifyedittext.PhoneCode
             android:id="@+id/phonecode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
-
 
         <com.longer.verifyedittext.PhoneCode
             android:id="@+id/phonecode2"

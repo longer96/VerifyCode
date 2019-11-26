@@ -41,7 +41,7 @@ publish {
     userOrg = 'longer496'//bintray.com用户名
     groupId = 'com.longer'//jcenter上的路径
     artifactId = 'verifycode'//项目名称
-    publishVersion = '1.0.2'//版本号
+    publishVersion = '1.0.3'//版本号
     desc = '一个验证码输入控件'//描述，不重要
     website = 'https://github.com/longer96/VerifyCode'//网站，不重要；尽量模拟github上的地址，例如我这样的；当然你有地址最好了
 }
