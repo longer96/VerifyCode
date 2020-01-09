@@ -36,7 +36,7 @@ public class PhoneCode extends RelativeLayout implements IPhoneCode {
     private int codeLength = 5;
     //输入的内容
     private String inputData = "";
-    private EditText editText;
+    public EditText editText;
 
     //TextView的list
     private List<TextView> tvList = new ArrayList<>();

@@ -7,7 +7,7 @@ Dependency
 
 ```groovy
 dependencies {
-    implementation 'com.longer:verifycode:1.0.3'
+    implementation 'com.longer:verifycode:1.0.4'
 }
 ```
 
@@ -125,6 +125,12 @@ phonecode.setOnVCodeCompleteListener(new PhoneCode.OnVCodeInputListener() {
         public void vCodeIncomplete(String verificationCode) {
         }
 });
+
+//显示软键盘
+EditText et = phonecode.editText;
+et.requestFocus();
+InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+imm.showSoftInput(et, InputMethodManager.SHOW_IMPLICIT);
 ```
 
 - #### 银行卡号验证java
