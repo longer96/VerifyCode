@@ -44,6 +44,7 @@ publish {
     publishVersion = '1.0.4'//版本号
     desc = '一个验证码输入控件'//描述，不重要
     website = 'https://github.com/longer96/VerifyCode'//网站，不重要；尽量模拟github上的地址，例如我这样的；当然你有地址最好了
+    licences = ['Apache-2.0']
 }
 
 tasks.withType(Javadoc) {//防止编码问题
